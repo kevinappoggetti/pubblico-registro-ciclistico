@@ -1,0 +1,76 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+/* Navbar */
+
+.navbar{
+  background-color:#0066cc;
+}
+.navbar-brand, .navbar-nav .nav-link{
+  color: #000;
+}
+
+&:hover{
+  color:#cccccc;
+}
+
+.buttonOrange{
+  background-color: #FC642D;
+}
+
+/* Card */
+
+#informazioniCardPersonale {
+    color:white;
+    background:-webkit-gradient(linear, 80% 20%, 10% 21%, from(#00DDFF), to(#219EFF));
+    border-radius: 25px;
+    margin-Bottom: 15px;
+}
+
+#informazioniCardBicicletta {
+    color:white;
+    background:-webkit-gradient(linear, 90% 20%, 10% 21%, from(#00C2FF), to(#197DFF));
+    border-radius: 25px;
+    margin-Bottom: 15px;
+}
+
+.boxShadow{
+  box-shadow:10px 10px 5px #000000;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+
+}
