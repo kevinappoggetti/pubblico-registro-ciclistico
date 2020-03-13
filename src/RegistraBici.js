@@ -3,9 +3,11 @@ import {ButtonToolbar, Button, Form, Col, Container, Card, InputGroup, Modal} fr
 import styled from 'styled-components';
 import './App.css';
 
-class  RegistraBici extends Component {
+export const RegistraBici = () => {
 
-  render(){
+    const [show, setShow] = React.useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     return(
         <Container >
@@ -28,11 +30,13 @@ class  RegistraBici extends Component {
                   </Form.Row>
 
                   <Form.Row>
+                  <div key="inline-radio">
                     <Form.Group as={Col} md="2" controlId="formGridSesso">
-                      <Form.Label>Sesso </Form.Label>
-                        <Form.Check type="radio" label = "Maschio" id="M" />
-                        <Form.Check inline type="radio" label = "Femmina" id="F"/>
+                      <Form.Label>Sesso</Form.Label>
+                        <Form.Check inline type="radio" name="options" label = "Maschio" id="inline-radio-1" />
+                        <Form.Check inline type="radio" name="options" label = "Femmina" id="inline-radio-2"/>
                     </Form.Group>
+                    </div>
 
                     <Form.Group as={Col} md="10" controlId="formGridEmail">
                       <Form.Label>Email</Form.Label>
@@ -69,7 +73,10 @@ class  RegistraBici extends Component {
                 </Form>
               </Card.Body>
             </Card>
-            <Card className="boxShadow " id="informazioniCardBicicletta" border="secondary">
+            <Card className="boxShadow "
+            id="informazioniCardBici"
+            //id="informazioniCardBicicletta"
+            border="secondary">
               <Card.Body>
                 <Form>
                 <h4>Informazioni sulla tua bicicletta</h4>
@@ -82,8 +89,8 @@ class  RegistraBici extends Component {
 
                     <Form.Group as={Col} md="6" controlId="formGridModello">
                       <Form.Label>Modello</Form.Label>
-                      <Form.Check type="radio" label = "Tradizionale" id="Tradizionale" />
-                      <Form.Check inline type="radio" label = "Elettrica" id="Elettrica"/>
+                      <Form.Check type="radio" name="biciradio" label = "Tradizionale" id="Tradizionale" />
+                      <Form.Check inline type="radio" name="biciradio" label = "Elettrica" id="Elettrica"/>
                     </Form.Group>
                   </Form.Row>
 
@@ -135,9 +142,24 @@ class  RegistraBici extends Component {
                     </Form.Group>
                   </Form.Row>
 
-                  <Button variant="primary" type="submit">
+
+                  <Button variant="outline-primary" onClick={handleShow} >
                     Registra la tua Bici!
                   </Button>
+                  <Modal id="modalClass" show={show} onHide={handleClose}>
+                      <Modal.Header closeButton>
+                        <Modal.Title>Sei sicuro di voler registrare la tua bici e le tue informazioni?</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>Ai fini della tutela dei dati personali, i dati personali non saranno salvati sulla Blockchain</Modal.Body>
+                      <Modal.Footer>
+                        <Button variant="outline-secondary" onClick={handleClose}>
+                          Annulla
+                        </Button>
+                        <Button variant="outline-primary" onClick={handleClose}>
+                          Registra
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
                 </Form>
             </Card.Body>
           </Card>
@@ -146,6 +168,5 @@ class  RegistraBici extends Component {
     );
   }
 
-}
 
 export default RegistraBici;

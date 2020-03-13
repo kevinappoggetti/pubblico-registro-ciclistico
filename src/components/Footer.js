@@ -11,5 +11,7 @@ const Styles = styled.div`
 `;
 
 export const Footer = ()=>(
-<Card.Footer className="text-muted">Innovativa Blockchain</Card.Footer>
+  <Card.Footer className="text-muted">
+    Innovativa Blockchain, San Benedetto del Tronto
+  </Card.Footer>
 );

@@ -41,8 +41,26 @@
   color:#cccccc;
 }
 
-.buttonOrange{
+#buttonOrange{
   background-color: #FC642D;
+}
+
+/* Container */
+#containerId{
+  margin-bottom: 20px;
+}
+
+/* Carousel */
+.carousel .item {
+  height: 450px;
+}
+
+.item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
 }
 
 /* Card */
@@ -54,11 +72,20 @@
     margin-Bottom: 15px;
 }
 
-#informazioniCardBicicletta {
+/*#informazioniCardBicicletta {
     color:white;
     background:-webkit-gradient(linear, 90% 20%, 10% 21%, from(#00C2FF), to(#197DFF));
     border-radius: 25px;
     margin-Bottom: 15px;
+}*/
+
+#informazioniCardBici{
+  width:65%;
+  margin:30px auto;
+}
+
+h1,h2,h3,h4,p {
+  font-family: "Verdana"
 }
 
 .boxShadow{

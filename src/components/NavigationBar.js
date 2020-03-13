@@ -18,8 +18,8 @@ export const NavigationBar = () => (
           <Nav.Link href="/contact">Contattaci</Nav.Link>
         </Nav>
         <Form inline>
-          <FormControl type="text" placeholder="Cerca" className="mr-sm-2" />
-          <Button className="buttonOrange">Ricerca una Bici</Button>
+          <FormControl type="text" placeholder="Cerca un modello" className="mr-sm-2" />
+          <Button variant="outline-primary" >Ricerca una Bici</Button>
         </Form>
       </Navbar.Collapse>
     </Navbar>
