@@ -45,9 +45,16 @@
   background-color: #FC642D;
 }
 
+/* Title */
+#h2Title{
+  text-align: center;
+  padding-top: 25px;
+  color:#353982;
+}
+
 /* Container */
 #containerId{
-  margin-bottom: 20px;
+  background-color:#B0C4DE;
 }
 
 /* Carousel */
@@ -65,12 +72,12 @@
 
 /* Card */
 
-#informazioniCardPersonale {
+/* #informazioniCardPersonale, {
     color:white;
     background:-webkit-gradient(linear, 80% 20%, 10% 21%, from(#00DDFF), to(#219EFF));
     border-radius: 25px;
     margin-Bottom: 15px;
-}
+} */
 
 /*#informazioniCardBicicletta {
     color:white;
@@ -79,14 +86,24 @@
     margin-Bottom: 15px;
 }*/
 
-#informazioniCardBici{
-  width:65%;
-  margin:30px auto;
+/* Form */
+#classicFieldTipoBici, #classicFieldNome, #classicFieldCap, #classicFieldCitta,#classicFieldData,#classicFieldEmail,#classicFieldMarca,#classicFieldStato,#classicFieldTelaio,#classicFieldCognome,#classicFieldFotoBici,#classicFieldTipoBici,#classicFieldIndirizzo,#classicFieldProvaDAcquisto,#classicFieldSegniParticolari,#classicFieldFotoSegniParticolari{
+  background-color:#f2f2f2;
+
+}
+
+#informazioniCardBici, #informazioniCardPersonale{
+  width:85%;
+  margin-left:auto;
+  margin-right: auto;
+  margin-top: 20px;
+  border-radius:15px;
 }
 
 h1,h2,h3,h4,p {
-  font-family: "Verdana"
+  font-family: "Helvetica Neue"
 }
+
 
 .boxShadow{
   box-shadow:10px 10px 5px #000000;

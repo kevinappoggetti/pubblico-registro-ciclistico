@@ -9,6 +9,7 @@ import {Layout} from './components/Layout';
 import {NavigationBar} from './components/NavigationBar';
 import {Jumbotron} from './components/Jumbotron';
 import {Footer} from './components/Footer';
+import './App.css';
 
 
 class App extends Component {
@@ -16,7 +17,7 @@ class App extends Component {
     return (
       <React.Fragment >
         <NavigationBar/>
-        <Layout >
+        <Layout>
           <Router>
             <Switch>
               <Route exact path="/" component={Home}/>
