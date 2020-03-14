@@ -3,12 +3,45 @@ import {ButtonToolbar, Button, Form, Col, Container, Card, InputGroup, Modal} fr
 import styled from 'styled-components';
 import './App.css';
 
-export const RegistraBici = () => {
+export class RegistraBici extends Component {
 
-    const [show, setShow] = React.useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  state = {
+    show:false,
+    setShow:false,
+    hash:'',
+    typed:''
+  }
 
+  showModal = ()=> {
+    this.setState({show:true});
+    console.log(this.show);
+  }
+
+  hideModal = ()=>{
+  this.setState({ show: false });
+  }
+
+  sha256 = async (message) => {
+    // encode as UTF-8
+    const getTyped=this.state.typed;
+    const msgBuffer = new TextEncoder('utf-8').encode(getTyped);
+    console.log("msgBuffer "+msgBuffer);
+    // hash the message
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    console.log("hashBuffer "+hashBuffer);
+    // convert ArrayBuffer to Array
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    console.log("hashArray "+hashArray);
+    // convert bytes to hex string
+    const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+    console.log("hashHex "+hashHex);
+    this.setState({hash:hashHex,show:false});
+
+    //hideModal();
+  }
+
+  render(){
+    //Modal variables
     return(
         <Container >
         <h2 id="h2Title">Registra qui la tua bici</h2>
@@ -145,19 +178,19 @@ export const RegistraBici = () => {
                   </Form.Row>
 
 
-                  <Button variant="outline-primary" onClick={handleShow} >
+                  <Button variant="outline-primary" onClick={this.showModal} >
                     Registra la tua Bici!
                   </Button>
-                  <Modal id="modalClass" show={show} onHide={handleClose}>
+                  <Modal id="modalClass" show={this.state.show} onHide={this.hideModal}>
                       <Modal.Header closeButton>
                         <Modal.Title>Sei sicuro di voler registrare la tua bici e le tue informazioni?</Modal.Title>
                       </Modal.Header>
                       <Modal.Body>Ai fini della tutela dei dati personali, tali dati non saranno salvati sulla Blockchain</Modal.Body>
                       <Modal.Footer>
-                        <Button variant="outline-secondary" onClick={handleClose}>
+                        <Button variant="outline-secondary" onClick={this.hideModal}>
                           Annulla
                         </Button>
-                        <Button variant="outline-primary" onClick={handleClose}>
+                        <Button variant="outline-primary" onClick={this.sha256} show={this.state.show}>
                           Registra
                         </Button>
                       </Modal.Footer>
@@ -165,10 +198,11 @@ export const RegistraBici = () => {
                 </Form>
             </Card.Body>
           </Card>
+          <Container>{this.state.hash}</Container>
         </Container>
-
     );
   }
+}
 
 
 export default RegistraBici;

@@ -62,7 +62,7 @@ class Home extends Component {
           <li>puoi stipulare polizze RCA, furto, conducente.</li>
         </ul>
         <Button id="buttonHomeCoseBlockchain" variant="outline-primary">
-          Cos'è la Blockchain?
+          Cos&rsquo;&egrave; la Blockchain?
         </Button>
       </Container>
       <Container id="containerBiciHome2">
@@ -71,22 +71,26 @@ class Home extends Component {
 
     <Container id="containerBlockchainHome">
       <Container id="containerBlockchainHome1">
-        <h3>Sempre più persone si affidano alla blockchain!</h3>
+        <h3 style={{fontWeight:"bold", fontSize:22, paddingTop:10, paddingBottom:10}}>Sempre più persone si affidano alla blockchain!</h3>
       </Container>
       <Container id="containerBlockchainHome2">
-        <p> Paragra 2</p>
+        <p> La firma digitale dà valore legale a un documento in formato digitale e funziona con un codice hash.
+            Pubblicoregistrociclistico.it crea un HASH UNIVOCO per la tua bici o ebike, che viene notarizzato nella blockchain pubblica di Ethereum al fine di dimostrare in qualsiasi momento e per sempre chi è il proprietario della bicicletta.</p>
+        <p>La blockchain è una recente tecnologia simile ad un database ma che ha le caratteristiche di immutabilità, sicurezza e garanzia di integrità dei dati, riconosciuta dall’Ordinamento Giuridico Italiano il 7 Febbraio 2019 attraverso il noto <a href="/">Decreto Semplificazioni</a>.</p>
       </Container>
     </Container>
 
+    <Container id="containerComeFunziona">
+      <h3 style={{fontWeight:"bold", fontSize:22, paddingTop:10, paddingBottom:10}}>Come funziona</h3>
+    </Container>
     <Container id="containerCarte">
-
 
       <Container id="card1">
         <Container id="face1">
           <Container id="content1">
             <img
               src={Immagine3} />
-            <h3>1- Registra la tua bicicletta</h3>
+            <h4>1- Registra la tua bicicletta</h4>
           </Container>
         </Container>
         <Container id="face12">
@@ -101,7 +105,7 @@ class Home extends Component {
           <Container id="content2">
             <img
               src={Immagine4} />
-            <h3>2 – Ricevi il documento unico</h3>
+            <h4>2 – Ricevi il documento unico</h4>
           </Container>
         </Container>
         <Container id="face22">
@@ -116,7 +120,7 @@ class Home extends Component {
           <Container id="content3">
             <img
               src={Immagine5} />
-            <h3>3 – La tua bicicletta è al sicuro</h3>
+            <h4>3 – La tua bicicletta è al sicuro</h4>
           </Container>
         </Container>
         <Container id="face32">
@@ -125,16 +129,7 @@ class Home extends Component {
           </Container>
         </Container>
       </Container>
-
-
-
     </Container>
-
-
-
-
-
-
 </Container>
     );
   }
