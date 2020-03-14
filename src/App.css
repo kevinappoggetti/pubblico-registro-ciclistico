@@ -32,6 +32,7 @@
 
 .navbar{
   background-color:#0066cc;
+
 }
 .navbar-brand, .navbar-nav .nav-link{
   color: #000;
@@ -41,9 +42,12 @@
   color:#cccccc;
 }
 
-#buttonOrange{
-  background-color: #FC642D;
+#navbarId{
+  position: fixed;
+  width: 100%;
+  z-index: 15;
 }
+
 
 /* Title */
 #h2Title{
@@ -51,11 +55,184 @@
   padding-top: 25px;
   color:#353982;
 }
+/*-----------------------------------------------------------------*/
+
+
+
+/*-----------------------------------------------------------------*/
 
 /* Container */
-#containerId{
-  background-color:#B0C4DE;
+ #containerId{
+  background-color:#fff;
+  margin:0;
+  max-width: 1200px;
+  width:100%;
 }
+
+#containerBiciHome{
+  display: flex;
+  padding: 30px 0;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+}
+
+
+#containerBiciHome1 {
+  width:50%;
+  /* border:2px solid black;
+  padding:20px; */
+}
+
+#containerBiciHome2{
+  width:50%;
+  /* border:2px solid black; */
+  background-image: url('./assets/immaginebici1.jpg');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* padding:20px; */
+
+}
+
+#containerBlockchainHome{
+  display: flex;
+  width: 100%;
+  padding: 30px 0;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+}
+
+#containerBlockchainHome1{
+  width:30%;
+  border:2px solid black;
+  padding:20px;
+}
+
+#containerBlockchainHome2{
+  width:70%;
+  border:2px solid black;
+  padding:20px;
+}
+
+
+#containerCarte{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width:1000px;
+}
+
+#card1,#card2,#card3{
+
+   padding-left: 0;
+   padding-right: 0;
+}
+
+#card1:hover #face1{
+  opacity: 1;
+  cursor:pointer;
+  transform: translateY(0px);
+}
+
+#card1:hover #face12{
+  transform: translateY(0px);
+}
+
+#card1:hover{
+  transition: 1.2s;
+  /* box-shadow:10px 10px 5px #000000; */
+}
+
+/* #card2:hover #face2{
+  opacity: 1;
+  cursor:pointer;
+  transform: translateY(0px);
+}
+
+#card2:hover #face22{
+  transform: translateY(0px);
+}
+
+#card2:hover{
+  transition: 1.2s;
+
+}
+
+#card3:hover #face3{
+  opacity: 1;
+  cursor:pointer;
+  transform: translateY(0px);
+}
+
+#card3:hover #face32{
+  transform: translateY(0px);
+}
+
+#card3:hover{
+  transition: 1.2s;
+
+} */
+
+
+
+#content1{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#content1 img{
+  font-size: 5em;
+  color: white;
+  /* padding: 20px; */
+  opacity: 1;
+}
+
+#face1{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  z-index: 3;
+  transform: translateY(100px);
+  border: 1px solid black;
+  /* width: 250px; */
+  height: 250px;
+}
+
+#face12{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top:20px;
+  background-color: #E86322;
+  transform: translateY(-150px);
+  border: 1px solid black;
+  height: 130px;
+  text-align: center;
+}
+
+#content12{
+  /* border: 2px solid black; */
+}
+
+#content12 p{
+  color:white;
+}
+
+h3 {
+  margin: 10px;
+  text-align: center;
+  color: black;
+}
+
+#buttonHomeCoseBlockchain{
+  padding: 5px;
+}
+/*-----------------------------------------------------------------*/
 
 /* Carousel */
 .carousel .item {
@@ -69,7 +246,7 @@
     height: 100%;
     width: 100%;
 }
-
+/*-----------------------------------------------------------------*/
 /* Card */
 
 /* #informazioniCardPersonale, {
@@ -86,6 +263,9 @@
     margin-Bottom: 15px;
 }*/
 
+/*-----------------------------------------------------------------*/
+
+
 /* Form */
 #classicFieldTipoBici, #classicFieldNome, #classicFieldCap, #classicFieldCitta,#classicFieldData,#classicFieldEmail,#classicFieldMarca,#classicFieldStato,#classicFieldTelaio,#classicFieldCognome,#classicFieldFotoBici,#classicFieldTipoBici,#classicFieldIndirizzo,#classicFieldProvaDAcquisto,#classicFieldSegniParticolari,#classicFieldFotoSegniParticolari{
   background-color:#f2f2f2;
@@ -101,9 +281,14 @@
 }
 
 h1,h2,h3,h4,p {
-  font-family: "Helvetica Neue"
+  font-family: "Helvetica Neue";
 }
 
+
+.paragrafoHome1{
+  font-size: 17px;
+  color:#E86322;
+}
 
 .boxShadow{
   box-shadow:10px 10px 5px #000000;

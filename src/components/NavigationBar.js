@@ -6,7 +6,7 @@ import '../App.css';
 
 export const NavigationBar = () => (
 
-    <Navbar collapseOnSelect expand="lg" bg="light" >
+    <Navbar id="navbarId" collapseOnSelect expand="lg" bg="light" >
     <Navbar.Brand href="/">
         <img src={Logo}/>
     </Navbar.Brand>
