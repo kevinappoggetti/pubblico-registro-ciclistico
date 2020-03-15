@@ -8,8 +8,27 @@ export class RegistraBici extends Component {
   state = {
     show:false,
     setShow:false,
+    showHash:false,
+    setShowHash:false,
     hash:'',
-    typed:''
+    nome:'',
+    cognome:'',
+    sesso:'',
+    datadinascita:'',
+    email:'',
+    stato:'',
+    indirizzo:'',
+    citta:'',
+    cap:'',
+    tipobici:'',
+    modello:'',
+    marca:'',
+    telaio:'',
+    fotobici:'',
+    datadiacquisto:'',
+    fotoprovadiacquisto:'',
+    segniparticolari:'',
+    fotosegniparticolari:''
   }
 
   showModal = ()=> {
@@ -21,24 +40,70 @@ export class RegistraBici extends Component {
   this.setState({ show: false });
   }
 
+  showModalHash=()=>{
+    this.setState({showHash:true});
+  }
+
+  hideModalHash=()=>{
+    this.setState({showHash:false});
+  }
+
+  handleTipoBiciChange=(e) => {
+   this.setState({tipobici: e.target.value});
+  }
+
+  handleModelloChange=(e) => {
+   this.setState({modello: e.target.value});
+  }
+
+  handleMarcaChange=(e) => {
+   this.setState({marca: e.target.value});
+  }
+
+  handleFotoBiciChange=(e) => {
+   this.setState({fotobici: e.target.value});
+  }
+
+  handleDataDiAcquistoChange=(e) => {
+   this.setState({datadiacquisto: e.target.value});
+  }
+
+  handleFotoProvaDAcquistoChange=(e) => {
+   this.setState({fotoprovadiacquisto: e.target.value});
+  }
+
+  handleSegniParticolariChange=(e) => {
+   this.setState({segniparticolari: e.target.value});
+  }
+
+  handleFotoSegniParticolariChange=(e) => {
+   this.setState({fotosegniparticolari: e.target.value});
+  }
+
   sha256 = async (message) => {
     // encode as UTF-8
-    const getTyped=this.state.typed;
+    const getTyped=this.state.tipobici.concat(
+      this.state.modello,
+      this.state.marca,
+      this.state.telaio,
+      this.state.fotobici,
+      this.state.datadiacquisto,
+      this.state.fotoprovadiacquisto,
+      this.state.segniparticolari,
+      this.state.fotosegniparticolari);
     const msgBuffer = new TextEncoder('utf-8').encode(getTyped);
-    console.log("msgBuffer "+msgBuffer);
     // hash the message
     const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-    console.log("hashBuffer "+hashBuffer);
     // convert ArrayBuffer to Array
     const hashArray = Array.from(new Uint8Array(hashBuffer));
-    console.log("hashArray "+hashArray);
     // convert bytes to hex string
     const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
-    console.log("hashHex "+hashHex);
     this.setState({hash:hashHex,show:false});
+    this.showModalHash();
 
     //hideModal();
   }
+
 
   render(){
     //Modal variables
@@ -118,55 +183,55 @@ export class RegistraBici extends Component {
                 <h4>Informazioni sulla tua bicicletta</h4>
 
                   <Form.Row>
-                    <Form.Group  as={Col} md="6" >
+                    <Form.Group onChange={this.handleTipoBiciChange} as={Col} md="6" >
                       <Form.Label>Tipo Bici</Form.Label>
                       <Form.Control id="classicFieldTipoBici" placeholder="Tipo Bici" />
                     </Form.Group>
 
-                    <Form.Group as={Col} md="6">
+                    <Form.Group onChange={this.handleModelloChange}as={Col} md="6">
                       <Form.Label>Modello</Form.Label>
-                      <Form.Check type="radio" name="biciradio" label = "Tradizionale" id="Tradizionale" />
-                      <Form.Check inline type="radio" name="biciradio" label = "Elettrica" id="Elettrica"/>
+                      <Form.Check type="radio" name="biciradio" value="Tradizionale" label = "Tradizionale" id="Tradizionale" />
+                      <Form.Check inline type="radio" name="biciradio" value="Elettrica" label = "Elettrica" id="Elettrica"/>
                     </Form.Group>
                   </Form.Row>
 
                   <Form.Row>
-                    <Form.Group as={Col} md="6" >
+                    <Form.Group onChange={this.handleMarcaChange} as={Col} md="6" >
                       <Form.Label>Marca</Form.Label>
                       <Form.Control id="classicFieldMarca" placeholder="Marca" />
                     </Form.Group>
 
-                    <Form.Group as={Col} md="6" >
+                    <Form.Group onChange={this.handleTelaioChange} as={Col} md="6" >
                       <Form.Label>Telaio</Form.Label>
                       <Form.Control id="classicFieldTelaio" placeholder="Telaio"/>
                     </Form.Group>
                   </Form.Row>
 
                   <Form.Row>
-                    <Form.Group as={Col} md="6" >
+                    <Form.Group onChange={this.handleFotoBiciChange} as={Col} md="6" >
                       <Form.Label>Foto Bici</Form.Label>
                       <Form.Control id="classicFieldFotoBici" placeholder="Foto Bici" />
                     </Form.Group>
 
-                    <Form.Group as={Col} md="6" >
+                    <Form.Group onChange={this.handleDataDiAcquistoChange} as={Col} md="6" >
                       <Form.Label>Data Acquisto</Form.Label>
                     </Form.Group>
                   </Form.Row>
 
                   <Form.Row>
-                    <Form.Group as={Col}>
+                    <Form.Group onChange={this.handleFotoProvaDAcquistoChange} as={Col}>
                       <Form.Label>Foto Prova D'Acquisto</Form.Label>
                       <Form.Control id="classicFieldProvaDAcquisto" placeholder="Foto prova d'acquisto"/>
                     </Form.Group>
                   </Form.Row>
 
                   <Form.Row>
-                    <Form.Group as={Col} md="6" >
+                    <Form.Group onChange={this.handleSegniParticolariChange} as={Col} md="6" >
                       <Form.Label>Segni Particolari</Form.Label>
                       <Form.Control id="classicFieldSegniParticolari" placeholder="Segni Particolari" />
                     </Form.Group>
 
-                    <Form.Group as={Col} md="6" >
+                    <Form.Group onChange={this.handleFotoSegniParticolariChange} as={Col} md="6" >
                       <Form.Label>Foto Segni Particolari</Form.Label>
                       <Form.Control id="classicFieldFotoSegniParticolari" placeholder="Foto segni particolari"/>
                     </Form.Group>
@@ -195,10 +260,22 @@ export class RegistraBici extends Component {
                         </Button>
                       </Modal.Footer>
                     </Modal>
+
+                    <Modal id="modalShowId" show={this.state.showHash} onHide={this.hideModalHash}>
+                      <Modal.Header closeButton>
+                        <Modal.Title>Hash della transazione</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>Il tuo hash è {this.state.hash}</Modal.Body>
+                      <Modal.Footer>
+                        <Button variant="primary" onClick={this.hideModalHash}>
+                          Capito!
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+
                 </Form>
             </Card.Body>
           </Card>
-          <Container>{this.state.hash}</Container>
         </Container>
     );
   }

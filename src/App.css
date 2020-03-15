@@ -296,7 +296,7 @@
 
 
 /* Form */
-#classicFieldTipoBici, #classicFieldNome, #classicFieldCap, #classicFieldCitta,#classicFieldData,#classicFieldEmail,#classicFieldMarca,#classicFieldStato,#classicFieldTelaio,#classicFieldCognome,#classicFieldFotoBici,#classicFieldTipoBici,#classicFieldIndirizzo,#classicFieldProvaDAcquisto,#classicFieldSegniParticolari,#classicFieldFotoSegniParticolari{
+#classicFieldTipoBici, #classicFieldNome, #classicFieldCap, #classicFieldCitta,#classicFieldData,#classicFieldEmail,#classicFieldMarca,#classicFieldStato,#classicFieldTelaio,#classicFieldCognome,#classicFieldFotoBici,#classicFieldTipoBici,#classicFieldIndirizzo,#classicFieldProvaDAcquisto,#classicFieldSegniParticolari,#classicFieldFotoSegniParticolari, #classicFieldCitta{
   background-color:#f2f2f2;
 
 }
@@ -311,6 +311,10 @@
 
 #informazioniCardPersonale{
   margin-top: 40px;
+}
+
+#modalShowId{
+  min-width: 612px;
 }
 
 h1,h2,h3,h4,p {
