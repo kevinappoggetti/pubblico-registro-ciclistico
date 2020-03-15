@@ -2,6 +2,8 @@ import React,{Component} from 'react';
 import {ButtonToolbar, Button, Form, Col, Container, Card, InputGroup, Modal} from 'react-bootstrap';
 import styled from 'styled-components';
 import './App.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export class RegistraBici extends Component {
 
@@ -14,7 +16,7 @@ export class RegistraBici extends Component {
     nome:'',
     cognome:'',
     sesso:'',
-    datadinascita:'',
+    datadinascita:new Date(),
     email:'',
     stato:'',
     indirizzo:'',
@@ -25,10 +27,11 @@ export class RegistraBici extends Component {
     marca:'',
     telaio:'',
     fotobici:'',
-    datadiacquisto:'',
+    datadiacquisto:new Date(),
     fotoprovadiacquisto:'',
     segniparticolari:'',
-    fotosegniparticolari:''
+    fotosegniparticolari:'',
+    datadiacquistoString:''
   }
 
   showModal = ()=> {
@@ -46,6 +49,42 @@ export class RegistraBici extends Component {
 
   hideModalHash=()=>{
     this.setState({showHash:false});
+  }
+
+  handleNomeChange=(e) => {
+   this.setState({nome: e.target.value});
+  }
+
+  handleCognomeChange=(e) => {
+   this.setState({cognome: e.target.value});
+  }
+
+  handleSessoChange=(e) => {
+   this.setState({sesso: e.target.value});
+  }
+
+  handleDataDiNascitaChange=(e) => {
+   this.setState({datadinascita: e.target.value});
+  }
+
+  handleEmailChange=(e) => {
+   this.setState({email: e.target.value});
+  }
+
+  handleStatoChange=(e) => {
+   this.setState({stato: e.target.value});
+  }
+
+  handleIndirizzoChange=(e) => {
+   this.setState({indirizzo: e.target.value});
+  }
+
+  handleCittaChange=(e) => {
+   this.setState({citta: e.target.value});
+  }
+
+  handleCapChange=(e) => {
+   this.setState({cap: e.target.value});
   }
 
   handleTipoBiciChange=(e) => {
@@ -100,10 +139,25 @@ export class RegistraBici extends Component {
     const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
     this.setState({hash:hashHex,show:false});
     this.showModalHash();
+    console.log("nome "+this.state.nome);
+    console.log("Data di nascita"+this.state.datadinascita.toString());
+    console.log("Data stringa " +this.state.datadiacquisto);
 
     //hideModal();
   }
 
+  handleChangeDataDiAcquisto = date => {
+    this.setState({
+      datadiacquisto: date,
+      datadiacquistoString: date.toString
+    });
+  };
+
+  handleChangeDataDiNascita = date => {
+      this.setState({
+        datadinascita: date
+      });
+    };
 
   render(){
     //Modal variables
@@ -116,36 +170,42 @@ export class RegistraBici extends Component {
               <Form>
                 <Card.Title>Informazioni Personali</Card.Title>
                 <Form.Row>
-                  <Form.Group as={Col} >
+                  <Form.Group onChange={this.handleNomeChange} as={Col} >
                     <Form.Label>Nome</Form.Label>
                     <Form.Control id="classicFieldNome"placeholder="Nome" />
                   </Form.Group>
 
-                  < Form.Group as={Col} >
+                  < Form.Group onChange={this.handleCognomeChange} as={Col} >
                     <Form.Label>Cognome</Form.Label>
                     <Form.Control id="classicFieldCognome" placeholder="Cognome" />
                     </Form.Group>
                   </Form.Row>
 
                   <Form.Row>
-                    <Form.Group as={Col} md="3" >
+                    <Form.Group onChange={this.handleSessoChange} as={Col} md="3" >
                       <Form.Label>Sesso</Form.Label>
                         <Form.Check  type="radio" name="options" label = "Maschio" id="inline-radio-1" />
                         <Form.Check inline type="radio" name="options" label = "Femmina" id="inline-radio-2"/>
                     </Form.Group>
 
-                    <Form.Group as={Col} md="3" >
-                      <Form.Label>Data</Form.Label>
+                    <Form.Group onChange={this.handleDataDiNascitaChange} as={Col} md="3" >
+                      <Form.Label>Data Di Nascita</Form.Label>
+                      <DatePicker
+                        disableClock={true}
+
+                        selected={this.state.datadinascita}
+                        onChange={this.handleChangeDataDiNascita}
+                      />
                     </Form.Group>
 
-                    <Form.Group as={Col} md="6" >
+                    <Form.Group onChange={this.handleEmailChange} as={Col} md="6" >
                       <Form.Label>Email</Form.Label>
                       <Form.Control id="classicFieldEmail" type="email" placeholder="Email" />
                     </Form.Group>
                   </Form.Row>
 
                   <Form.Row>
-                    <Form.Group as={Col} >
+                    <Form.Group onChange={this.handleStatoChange} as={Col} >
                       <Form.Label>Stato</Form.Label>
                       <Form.Control id="classicFieldStato" as="select">
                         <option>Scegli...</option>
@@ -155,19 +215,18 @@ export class RegistraBici extends Component {
                   </Form.Row>
 
                   <Form.Row>
-                    <Form.Group as ={Col} md="6" >
+                    <Form.Group onChange={this.handleIndirizzoChange} as ={Col} md="6" >
                       <Form.Label>Indirizzo</Form.Label>
                       <Form.Control id="classicFieldIndirizzo" placeholder="Indirizzo" />
                     </Form.Group>
 
-                    <Form.Group as={Col} md="5">
+                    <Form.Group onChange={this.handleCittaChange} as={Col} md="5">
                       <Form.Label>Città</Form.Label>
                       <Form.Control id="classicFieldCitta" placeholder="Città" />
                     </Form.Group>
 
-                    <Form.Group as={Col} md="1" >
+                    <Form.Group onChange={this.handleCapChange} as={Col} md="1" >
                       <Form.Label>Cap</Form.Label>
-
                       <Form.Control id="classicFieldCap" placeholder="Cap"/>
                       </Form.Group>
                   </Form.Row>
@@ -181,14 +240,13 @@ export class RegistraBici extends Component {
               <Card.Body>
                 <Form>
                 <h4>Informazioni sulla tua bicicletta</h4>
-
                   <Form.Row>
                     <Form.Group onChange={this.handleTipoBiciChange} as={Col} md="6" >
                       <Form.Label>Tipo Bici</Form.Label>
                       <Form.Control id="classicFieldTipoBici" placeholder="Tipo Bici" />
                     </Form.Group>
 
-                    <Form.Group onChange={this.handleModelloChange}as={Col} md="6">
+                    <Form.Group onChange={this.handleModelloChange} as={Col} md="6">
                       <Form.Label>Modello</Form.Label>
                       <Form.Check type="radio" name="biciradio" value="Tradizionale" label = "Tradizionale" id="Tradizionale" />
                       <Form.Check inline type="radio" name="biciradio" value="Elettrica" label = "Elettrica" id="Elettrica"/>
@@ -215,6 +273,12 @@ export class RegistraBici extends Component {
 
                     <Form.Group onChange={this.handleDataDiAcquistoChange} as={Col} md="6" >
                       <Form.Label>Data Acquisto</Form.Label>
+                      <DatePicker
+                        selected={this.state.datadiacquisto}
+                        onChange={this.handleChangeDataDiAcquisto}
+                        dateFormat="dd-mm-yyyy"
+                        placeholderText="Data"
+                      />
                     </Form.Group>
                   </Form.Row>
 
@@ -241,7 +305,6 @@ export class RegistraBici extends Component {
                       <Form.Check type="checkbox" label="Accetto termini e Condizioni d'uso" />
                     </Form.Group>
                   </Form.Row>
-
 
                   <Button variant="outline-primary" onClick={this.showModal} >
                     Registra la tua Bici!
